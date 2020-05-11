@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: f5-override-as3-declaration
+  namespace: default
+data:
+  template: |
+    {
+      "declaration": {
+        "openshift_AS3": {
+                "Shared": {
+                    "bookinfo_https_dc1": {
+                        "virtualAddresses": [
+                            "10.105.250.122"
+                        ],
+               "iRules": [
+              {
+                "bigip": "/Common/_sys_APM_ExchangeSupport_helper"
+              }
+              ],  
+                         "policyEndpoint": [
+                        {
+                          "bigip": "/Common/bookinfo"
+                        }
+                        ], 
+
+                        "policyIAM": [
+                        {
+                          "bigip": "/Common/bookinfo"
+                        }
+                        ],     
+                        "policyIAM": {
+                          "bigip": "/Common/bookinfo"
+                        }
+                    }
+                }
+        }
+      }
+    }

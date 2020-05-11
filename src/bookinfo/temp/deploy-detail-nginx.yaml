@@ -1,0 +1,72 @@
+##################################################################################################
+# Productpage services
+##################################################################################################
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: detail-sidecar
+  name: detail-sidecar
+spec:
+  replicas: 1
+  selector:
+    app: detail-sidecar
+  template:
+    metadata:
+      labels:
+        app: detail-sidecar
+    spec:
+      containers:
+      - name: nginx-waf
+        securityContext:
+          privileged: true
+          runAsUser: 0
+        image: cjunwchen/cj-centos-nginx-waf:bookinfo
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
+          - name: secret-volume
+            mountPath: /app/cert
+      - image: docker.io/maistra/examples-bookinfo-details-v1:0.12.0
+        name: detail-sidecar
+      volumes:
+      - name: config-volume
+        configMap:
+          name: nginx-conf-detail
+      - name: secret-volume
+        secret:
+          secretName: bookinfo-cert
+          items:
+            - key: ssl-cert
+              path: ssl-cert
+            - key: ssl-key
+              path: ssl-key
+            - key: ca-cert
+              path: ca-cert
+            - key: adc-key
+              path: adc-key
+            - key: adc-cert
+              path: adc-cert
+      securityContext: {}
+      serviceAccount: bookinfo-sa
+      serviceAccountName: bookinfo-sa
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: detail
+  labels:
+    app: detail
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8443
+    targetPort: 8443
+    name: https
+  - port: 9080
+    targetPort: 8080
+    name: http
+  selector:
+    app: detail-sidecar
+---

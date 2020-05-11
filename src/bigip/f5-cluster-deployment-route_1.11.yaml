@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-bigip-ctlr
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-bigip-ctlr
+  template:
+    metadata:
+      name: k8s-bigip-ctlr
+      labels:
+        app: k8s-bigip-ctlr
+    spec:
+      serviceAccountName: k8s-bigip-ctlr
+      containers:
+        - name: k8s-bigip-ctlr
+          image: "f5networks/k8s-bigip-ctlr:latest"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: BIGIP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: bigip-login
+                  key: username
+            - name: BIGIP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: bigip-login
+                  key: password
+          command: ["/app/bin/k8s-bigip-ctlr"]
+          args: [
+            "--bigip-username=$(BIGIP_USERNAME)",
+            "--bigip-password=$(BIGIP_PASSWORD)",
+            "--bigip-url=10.105.250.100",
+            "--bigip-partition=openshift",
+            "--pool-member-type=cluster",
+            "--openshift-sdn-name=/Common/ose-tunnel",
+            "--manage-routes=true",
+            "--namespace=bookinfo",
+            "--route-vserver-addr=10.105.250.121",
+            "--route-http-vserver=bookinfo-http-dc1",
+            "--route-https-vserver=bookinfo-https-dc1",
+            # AS3 override functionality
+            "--override-as3-declaration=default/f5-override-as3-declaration",
+            "--insecure=true",
+            #"--log-as3-response=true",
+            "--agent=as3"
+          ]

@@ -1,0 +1,67 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: details
+  labels:
+    app: details
+    service: details
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: details
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: details-v1
+  labels:
+    app: details
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: details
+        version: v1
+    spec:
+      containers:
+      - name: nginx-waf
+        securityContext:
+          privileged: true
+          runAsUser: 0
+        image: cjunwchen/cj-centos-nginx-waf:bookinfo
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
+          - name: secret-volume
+            mountPath: /app/cert
+      - name: details
+        image: docker.io/maistra/examples-bookinfo-details-v1:0.12.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+      volumes:
+      - name: config-volume
+        configMap:
+          name: nginx-conf-detail
+      - name: secret-volume
+        secret:
+          secretName: bookinfo-cert
+          items:
+            - key: ssl-cert
+              path: ssl-cert
+            - key: ssl-key
+              path: ssl-key
+            - key: ca-cert
+              path: ca-cert
+            - key: adc-key
+              path: adc-key
+            - key: adc-cert
+              path: adc-cert
+      securityContext: {}
+      serviceAccount: bookinfo-sa
+      serviceAccountName: bookinfo-sa

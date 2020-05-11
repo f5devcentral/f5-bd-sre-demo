@@ -1,0 +1,202 @@
+##################################################################################################
+# Configmap Product Page
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bookinfo-productpage-conf
+data:
+  productpage.conf: |-
+
+    log_format elk_format_productpage 'time=[$time_local] client_ip=$remote_addr virtual=$server_name client_port=$remote_port xff_ip=$http_X_Forwarded_For lb_server=$upstream_addr http_host=$host http_method=$request_method http_request_uri=$request_uri status_code=$status content_type="$sent_http_content_type" content_length="$sent_http_content_length" response_time=$request_time referer="$http_referer" http_user_agent="$http_user_agent" x-request-id=$myid ';
+
+    upstream productpageApp {
+       server 127.0.0.1:9080;
+    }
+
+    server {
+       listen 5000;
+       server_name productpage-http;
+
+       #error_log /var/log/nginx/internalApp.error.log info;
+       access_log syslog:server=10.69.33.1:8516 elk_format_productpage;
+
+       set  $myid $http_x_request_id;
+       if ($http_x_request_id ~* "(\w+)-(\w+)" ) {
+         set  $myid  $2;
+       }
+
+       location / {
+        proxy_pass http://productpageApp;
+       }
+    }
+
+
+    server {
+       listen 8443 ssl;
+       server_name productpage-https;
+
+       #error_log /var/log/nginx/internalApp.error.log info;
+       access_log syslog:server=10.69.33.1:8516 elk_format_productpage;
+
+       set  $myid $http_x_request_id;
+       if ($http_x_request_id ~* "(\w+)-(\w+)" ) {
+         set  $myid  $2;
+       }
+
+       #modsecurity on;
+       #modsecurity_rules_file /etc/nginx/modsec/main.conf;
+
+       ssl_certificate      /app/cert/ssl-cert;
+       ssl_certificate_key  /app/cert/ssl-key;
+       #ssl_client_certificate /app/cert/ca-cert;
+       #ssl_verify_client on;
+
+       ssl_protocols TLSv1.2;
+       ssl_ciphers EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:!EECDH+3DES:!RSA+3DES:!MD5;
+       ssl_prefer_server_ciphers on;
+
+       location / {
+        proxy_pass http://productpageApp;
+       }
+    }
+---
+##################################################################################################
+# Configmap Detail Services
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bookinfo-details-conf
+data:
+  details.conf: |-
+
+    log_format elk_format_details 'time=[$time_local] client_ip=$remote_addr virtual=$server_name client_port=$remote_port xff_ip=$remote_addr lb_server=$upstream_addr http_host=$host http_method=$request_method http_request_uri=$request_uri status_code=$status content_type="$sent_http_content_type" content_length="$sent_http_content_length" response_time=$request_time referer="$http_referer" http_user_agent="$http_user_agent" x-request-id=$myid ';
+
+    upstream detailsApp {
+       server 127.0.0.1:9080;
+    }
+
+    server {
+       listen 5000;
+       server_name details;
+
+       #error_log /var/log/nginx/internalApp.error.log info;
+       access_log syslog:server=10.69.33.1:8516 elk_format_details;
+
+       set  $myid $http_x_request_id;
+       if ($http_x_request_id ~* "(\w+)-(\w+)" ) {
+         set  $myid  $2;
+       }
+
+       location / {
+        proxy_pass http://detailsApp;
+       }
+    }
+---
+##################################################################################################
+# Configmap Rating Services
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bookinfo-rating-conf
+data:
+  rating.conf: |-
+
+    log_format elk_format_rating 'time=[$time_local] client_ip=$remote_addr virtual=$server_name client_port=$remote_port xff_ip=$remote_addr lb_server=$upstream_addr http_host=$host http_method=$request_method http_request_uri=$request_uri status_code=$status content_type="$sent_http_content_type" content_length="$sent_http_content_length" response_time=$request_time referer="$http_referer" http_user_agent="$http_user_agent" x-request-id=$myid ';
+
+    upstream ratingApp {
+       server 127.0.0.1:9080;
+    }
+
+    server {
+       listen 5000;
+       server_name rating;
+
+       #error_log /var/log/nginx/internalApp.error.log info;
+       access_log syslog:server=10.69.33.1:8516 elk_format_rating;
+
+       set  $myid $http_x_request_id;
+       if ($http_x_request_id ~* "(\w+)-(\w+)" ) {
+         set  $myid  $2;
+       }
+
+       location / {
+        proxy_pass http://ratingApp;
+       }
+    }
+---
+##################################################################################################
+# Configmap Review Services
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bookinfo-review-conf
+data:
+  review.conf: |-
+
+    log_format elk_format_review 'time=[$time_local] client_ip=$remote_addr virtual=$server_name client_port=$remote_port xff_ip=$remote_addr lb_server=$upstream_addr http_host=$host http_method=$request_method http_request_uri=$request_uri status_code=$status content_type="$sent_http_content_type" content_length="$sent_http_content_length" response_time=$request_time referer="$http_referer" http_user_agent="$http_user_agent" x-request-id=$myid ';
+
+    upstream reviewApp {
+       server reviews-v1:9080;
+    }
+
+    upstream reviewApp_test {
+       server reviews-v1:9080;
+       server reviews-v2:9080;
+       server reviews-v3:9080;
+    }
+
+    # map to different upstream backends based on header
+    map $http_x_request_id $pool {
+       ~*test.* "reviewApp_test";
+       default "reviewApp";
+    }
+
+    server {
+       listen 5000;
+       server_name review;
+
+       #error_log /var/log/nginx/internalApp.error.log info;
+       access_log syslog:server=10.69.33.1:8516 elk_format_review;
+       #access_log /var/tmp/nginx-access.log elk_format_review;
+
+       set  $myid $http_x_request_id;
+       if ($http_x_request_id ~* "(\w+)-(\w+)" ) {
+         set  $myid  $2;
+       }
+
+       location / {
+        proxy_pass http://$pool;
+       }
+    }
+---
+##################################################################################################
+# Configmap default
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bookinfo-default-conf
+data:
+  default.conf: |-
+
+    log_format elk_format 'time=[$time_local] client_ip=$remote_addr virtual=$server_name client_port=$remote_port xff_ip=$remote_addr lb_server=$upstream_addr http_host=$host http_method=$request_method http_request_uri=$request_uri status_code=$status content_type="$sent_http_content_type" content_length="$sent_http_content_length" response_time=$request_time referer="$http_referer" http_user_agent="$http_user_agent" x-request-id=$myid ';
+
+    upstream internalApp {
+       server 127.0.0.1:9080;
+    }
+
+    server {
+       listen 5000;
+
+       #error_log /var/log/nginx/internalApp.error.log info;
+       access_log syslog:server=10.69.33.1:8516 elk_format;
+
+       location / {
+        proxy_pass http://internalApp;
+       }
+    }
+---

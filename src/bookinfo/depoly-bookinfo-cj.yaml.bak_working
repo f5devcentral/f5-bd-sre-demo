@@ -1,0 +1,374 @@
+##################################################################################################
+# Details service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: details
+  labels:
+    app: details
+    service: details
+spec:
+  ports:
+  - port: 9080
+    targetPort: 5000
+    name: http
+  selector:
+    app: details
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: details-v1
+  labels:
+    app: details
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: details
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: details
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: nginx
+        image: cjunwchen/cj-centos-nginx-waf:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d/details.conf
+          subPath: details.conf
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: details
+        image: docker.io/istio/examples-bookinfo-details-v1:1.15.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+      volumes:
+      - name: config-volume
+        configMap:
+          name: bookinfo-details-conf
+---
+##################################################################################################
+# Ratings service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: ratings
+  labels:
+    app: ratings
+    service: ratings
+spec:
+  ports:
+  - port: 9080
+    targetPort: 5000
+    name: http
+  selector:
+    app: ratings
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ratings-v1
+  labels:
+    app: ratings
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ratings
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: ratings
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: nginx
+        image: cjunwchen/cj-centos-nginx-waf:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d/rating.conf
+          subPath: rating.conf
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: ratings
+        image: docker.io/istio/examples-bookinfo-ratings-v1:1.15.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+      volumes:
+      - name: config-volume
+        configMap:
+          name: bookinfo-rating-conf
+---
+##################################################################################################
+# Reviews service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews
+  labels:
+    app: reviews-nginx
+    service: reviews
+spec:
+  ports:
+  - port: 9080
+    targetPort: 5000
+    name: http
+  selector:
+    app: reviews-nginx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviews-nginx
+  labels:
+    app: reviews-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reviews-nginx
+  template:
+    metadata:
+      labels:
+        app: reviews-nginx
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: nginx
+        image: cjunwchen/cj-centos-nginx-waf:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d/review.conf
+          subPath: review.conf
+      volumes:
+      - name: config-volume
+        configMap:
+          name: bookinfo-review-conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews-v1
+  labels:
+    app: reviews-v1
+spec:
+  clusterIP: None
+  ports:
+  - port: 9080
+    targetPort: 9080
+    name: http
+  selector:
+    app: reviews-v1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviews-v1
+  labels:
+    app: reviews-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reviews-v1
+  template:
+    metadata:
+      labels:
+        app: reviews-v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: reviews
+        image: docker.io/istio/examples-bookinfo-reviews-v1:1.15.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews-v2
+  labels:
+    app: reviews-v2
+spec:
+  clusterIP: None
+  ports:
+  - port: 9080
+    targetPort: 9080
+    name: http
+  selector:
+    app: reviews-v2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviews-v2
+  labels:
+    app: reviews-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reviews-v2
+  template:
+    metadata:
+      labels:
+        app: reviews-v2
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: reviews
+        image: docker.io/istio/examples-bookinfo-reviews-v2:1.15.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews-v3
+  labels:
+    app: reviews-v3
+spec:
+  clusterIP: None
+  ports:
+  - port: 9080
+    targetPort: 9080
+    name: http
+  selector:
+    app: reviews-v3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviews-v3
+  labels:
+    app: reviews-v3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reviews-v3
+  template:
+    metadata:
+      labels:
+        app: reviews-v3
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: reviews
+        image: docker.io/istio/examples-bookinfo-reviews-v3:1.15.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+---
+##################################################################################################
+# Productpage services
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: productpage
+  labels:
+    app: productpage
+    service: productpage
+spec:
+  ports:
+  - port: 5000
+    targetPort: 5000
+    name: http
+  - port: 8443
+    targetPort: 8443
+    name: https
+  selector:
+    app: productpage
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productpage-v1
+  labels:
+    app: productpage
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productpage
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: productpage
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: nginx
+        image: cjunwchen/cj-centos-nginx-waf:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d/productpage.conf
+          subPath: productpage.conf
+        - name: secret-volume
+          mountPath: /app/cert
+      - env:
+        - name: TZ
+          value: Asia/Singapore
+        name: productpage
+        image: docker.io/istio/examples-bookinfo-productpage-v1:1.15.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+      volumes:
+      - name: config-volume
+        configMap:
+          name: bookinfo-productpage-conf
+      - name: secret-volume
+        secret:
+          secretName: bookinfo-cert
+          items:
+            - key: ssl-cert
+              path: ssl-cert
+            - key: ssl-key
+              path: ssl-key
+            - key: ca-cert
+              path: ca-cert
+            - key: adc-key
+              path: adc-key
+            - key: adc-cert
+              path: adc-cert
+      securityContext: {}
+      serviceAccount: bookinfo-sa
+      serviceAccountName: bookinfo-sa
+---

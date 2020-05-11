@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Bookstore App</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap-theme.min.css">
+
+  </head>
+  <body>
+    
+    
+<p>
+    <h3>Hello! This is a simple bookstore application consisting of three services as shown below</h3>
+</p>
+
+<table class="table table-condensed table-bordered table-hover"><tr><th>name</th><td>http://details:9080</td></tr><tr><th>endpoint</th><td>details</td></tr><tr><th>children</th><td><table class="table table-condensed table-bordered table-hover"><tr><th>name</th><th>endpoint</th><th>children</th></tr><tr><td>http://details:9080</td><td>details</td><td></td></tr><tr><td>http://reviews:9080</td><td>reviews</td><td><table class="table table-condensed table-bordered table-hover"><tr><th>name</th><th>endpoint</th><th>children</th></tr><tr><td>http://ratings:9080</td><td>ratings</td><td></td></tr></table></td></tr></table></td></tr></table>
+
+<p>
+    <h4>Click on one of the links below to auto generate a request to the backend as a real user or a tester
+    </h4>
+</p>
+<p><a href="/productpage?u=normal">Normal user</a></p>
+<p><a href="/productpage?u=test">Test user</a></p>
+
+
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="static/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="static/bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

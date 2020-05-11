@@ -1,0 +1,1 @@
+oc create secret generic bookinfo-cert --from-file=ssl-key=./cert/httpbin.f5asean.local.key --from-file=ssl-cert=./cert/httpbin.f5asean.local.crt --from-file=ca-cert=./cert/f5asean.local.ca.crt --from-file=adc-cert=./cert/f5adc.crt --from-file=adc-key=./cert/f5adc.key
