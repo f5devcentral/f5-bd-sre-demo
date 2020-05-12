@@ -34,8 +34,9 @@ Once the necessary servers and infrastructure are in place users will be able to
 
 The SRE demo will be centered around # distinct customer driven use cases. 
 
-- [Scenario Use Case #1: Targeted Canary Deployment](sre-usecases/01-targeted-canary/README.md)
-- [Scenario Use Case #2: Blue Green Deployment with F5 Cloud Services](./sre-usecases/02-blue-green-deployment/README.md)
+
+- [Scenario Use Case #1: Blue Green Deployment with F5 Cloud Services](./sre-usecases/02-blue-green-deployment/README.md)
+- [Scenario Use Case #2: Targeted Canary Deployment](sre-usecases/01-targeted-canary/README.md)
 
 This project is WIP, with more use cases to be added.
 
