@@ -1,4 +1,4 @@
-# Getting Started - SRE ELK Stack Deployment 
+# Getting Started - Observability from BIG-IP and NGINX
 ## Summary
 The ELK(Elasticsearch, Logstash, Kibana) is the acronym for three open source projects. 
 Elasticsearch is a search and analytics engine and Logstash is a server-side data processing pipeline that ingests data from multiple sources, transforms it and send to Elasticsearch.
