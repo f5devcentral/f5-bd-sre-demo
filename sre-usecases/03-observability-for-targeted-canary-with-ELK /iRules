@@ -1,0 +1,105 @@
+when CLIENT_ACCEPTED {
+    set timestamp [clock format [clock seconds] -format "%d/%h/%y:%T %Z" ]
+}
+
+when HTTP_REQUEST {
+    # UUID injection
+    if { [HTTP::cookie x-request-id] == "" } {
+        append s [clock seconds] [IP::local_addr] [IP::client_addr] [expr { int(100000000 * rand()) }] [clock clicks] 
+
+        set s [md5 $s] 
+
+        binary scan $s c* s 
+        lset s 8 [expr {([lindex $s 8] & 0x7F) | 0x40}] 
+        lset s 6 [expr {([lindex $s 6] & 0x0F) | 0x40}] 
+        set s [binary format c* $s] 
+        binary scan $s H* s 
+
+        set myuuid $s
+        unset s 
+
+        
+        set inject_uuid_cookie 1
+    } else {
+
+        set myuuid [HTTP::cookie x-request-id]
+        set inject_uuid_cookie 0
+    }
+    
+    set xff_ip "[expr int(rand()*100)].[expr int(rand()*100)].[expr int(rand()*100)].[expr int(rand()*100)]"
+
+    set hsl [HSL::open -proto UDP -pool pool_elk]
+    set http_request "\"[HTTP::method] [HTTP::uri] HTTP/[HTTP::version]\""
+    set http_request_time [clock clicks -milliseconds]
+    set http_user_agent "\"[HTTP::header User-Agent]]\""
+    set http_host [HTTP::host]
+    set http_username [HTTP::username]
+    set client_ip [IP::remote_addr]
+    set client_port [TCP::remote_port]
+    set http_request_uri [HTTP::uri]
+    set http_method [HTTP::method]
+    set referer "\"[HTTP::header value referer]\""
+    
+    if { [HTTP::uri] contains "test" } {
+        HTTP::header insert "x-request-id" "test-$myuuid"
+    
+    } else {
+        HTTP::header insert "x-request-id" $myuuid
+    }
+    HTTP::header insert "X-Forwarded-For" $xff_ip
+}
+
+
+when HTTP_RESPONSE {
+
+    set syslogtime [clock format [clock seconds] -format "%h %e %H:%M:%S"]
+
+    set response_time [expr {double([clock clicks -milliseconds] - $http_request_time)/1000}]
+
+    set virtual [virtual]
+    set content_length 0
+    if { [HTTP::header exists "Content-Length"] } {
+        set content_length \"[HTTP::header "Content-Length"]\"
+    } else {
+        set content_length \"-\"
+    }
+    set lb_server "[LB::server addr]:[LB::server port]"
+    if { [string compare "$lb_server" ""] == 0 } {
+        set lb_server ""
+    }
+    set status_code [HTTP::status]
+    set content_type \"[HTTP::header "Content-type"]\"
+
+    # construct log for elk, local6.info <182>
+    set log_msg "<182>$syslogtime f5adc tmos: "
+    #set log_msg ""
+    append log_msg "time=\[$timestamp\] "
+    append log_msg "client_ip=$client_ip "
+    append log_msg "virtual=$virtual "
+    append log_msg "client_port=$client_port "
+    append log_msg "xff_ip=$xff_ip "
+    append log_msg "lb_server=$lb_server "
+    
+    append log_msg "http_host=$http_host "
+    append log_msg "http_method=$http_method "
+    append log_msg "http_request_uri=$http_request_uri "
+    
+    append log_msg "status_code=$status_code "
+    append log_msg "content_type=$content_type "
+    append log_msg "content_length=$content_length "
+    
+    append log_msg "response_time=$response_time "
+    append log_msg "referer=$referer "
+    append log_msg "http_user_agent=$http_user_agent "
+    append log_msg "x-request-id=$myuuid "
+
+    if { $inject_uuid_cookie == 1} {
+        HTTP::cookie insert name x-request-id value $myuuid path "/"
+        set inject_uuid_cookie 0
+    }
+
+    # log local2. sending log to elk via log publisher
+    #log local2. $log_msg
+    HSL::send $hsl $log_msg
+
+}
