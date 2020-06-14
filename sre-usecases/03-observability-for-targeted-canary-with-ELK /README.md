@@ -39,18 +39,62 @@ _Hereby, it’s ready to use ELK stack for BIG-IP access logs, NGINX apps in ope
  If all of configurations are ready to use in proper, all of defined logs are saving in ELK server. We are able to customize a  dashboard to see visualized useful information which user location, response time by location etc.<br>
 Let us see how it works<br>
 
-<br>_open your browser and go to ELK server( http://x.x.x.x:5601 ) then you can see a Kibana main window like following_
+<br>_step1) open your browser and go to ELK server( http://x.x.x.x:5601 ) then you can see a Kibana main window like following_
 ![Kibana1_main](images/Kibana1_main.png)
 
-<br>_Then press control icon from left side-menu to go to management page_
+<br>_step2) Then press control icon from left side-menu to go to management page_
 ![Kibana2_management](images/Kibana2_management.png)
 
-<br>_We can see the management page then press "Index Management" menu from the page_
+<br>_step3) We can see the management page then press "Index Management" menu from the page_
 ![Kibana3_management_detail](images/Kibana3_management_detail.png)
 
-<br>_Now, we can see index management page and see index name which defined them in ![logstash.conf](./logstash.conf) file._
+<br>_step4) Now, we can see index management page and see index name which defined them in ![logstash.conf](./logstash.conf) file._
 ![Kibana4_index_management](images/Kibana4_index_management.png)
 <br>_You can check more detail to index manage from_ ![here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
+
+<br>_step5) Next step is that we will make visualize with our indexed data to add it into dashboard so let's move to visualize tab then press "Create new visualization"_
+![Kibana5_visualize](images/Kibana5_visualize.png)
+
+<br>_step6) Choose one of the visualization data type and we will use coordinate Map in here_
+![Kibana6_create](images/Kibana6_create.png)
+
+<br>_step7) Choose source what you want to use and we will choose "logstash-f5-nginx-access" for demo_ 
+![Kibana7_source](images/Kibana7_source.png)
+
+<br>_step8_metrics) We need to set Metrics and Buckets on this step. aggregation is Average and field is response_time_ms then custom label is Response Time_ 
+![Kibana8_Metrics](images/Kibana8_Metrics.png)
+
+<br>_step8_buckets) At the Buckets, aggregation is Geohash and field is geoip.location as default and other options remain as default then custom label type Locations_ 
+![Kibana8_Bucktes](images/Kibana8_Buckets.png)
+
+<br>_step9_apply) Traffic generator is working in background so we can see the result like follwoing after update metrics/buckets and press apply change button_ 
+![Kibana9_apply](images/Kibana9_apply_save.png)
+
+<br>_step9_save) We need to save the visualize configuration and we will save as ASEAN_CES_ 
+![Kibana9_save](images/Kibana9_save_name.png)
+<br>_We just created one sample visualize data but if you want to more visualize data, you can repeate step5 to step9 as much as you want to create.
+
+<br>_step10_dashboard)We will go to create dashboard to add the visualize date on it. Press "Dashboard" button from left side-menu_ 
+![Kibana10_dashboard](images/Kibana10_dashboard.png)
+
+<br>_step10_crate) Press "Create new dashboard" button_ 
+![Kibana10_create](images/Kibana10_dashboard_create.png)
+
+<br>_step10_add_panel) Press "Add" button then we need to choose panels in here what we created the visualize. The ASEAN_CES was just created one at step9_ 
+![Kibana10_add_panel](images/Kibana10_add_panel.png)
+![Kibana10_choose_panel](images/Kibana10_select_panel.png)
+
+<br>_step10_save) The visualize 'ASEAN_CES' is displaying on the dashboard now.We will see only one in here but if you created some more at step9, you can add all of them in here_ 
+![Kibana10_save](images/Kibana10_dashboard_save.png)
+
+<br>_step10_dashboard) We need to save the dashboard so press "Save" button then type the dashboard title which "ASEAN_CES_Dashboard"_ 
+![Kibana10_dashboard_name](images/Kibana10_dashboard_name.png)
+![Kibana10_dashboard_final](images/Kibana10_dashboard_final.png)
+<br>_Now, we are ready to see dashboard what we created visualize. 
+
+
+<br>_step10_dashboard)_ 
+![Kibana10_dashboard](images/Kibana10_dashboard.png)
 
 
 3. ELK Dashboard Sampels
