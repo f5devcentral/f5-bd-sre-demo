@@ -34,6 +34,7 @@ _The new VIP name is a bookinfo-EdgeGW and the bookinfo pool is defined for defa
 
 _Hereby, it’s ready to use ELK stack for BIG-IP access logs, NGINX apps in openshift cluster but we don’t need any configuration for NGINX apps at this step why it’s already pushed at the first case in config-map._<br>
 ![ELK_Log](images/elk_log.png)
+<br><br>
 
 ### 2. Customize Kibana Dashboard<br>
  If all of configurations are ready to use in proper, all of defined logs are saving in ELK server. We are able to customize a  dashboard to see visualized useful information which user location, response time by location etc.<br>
@@ -98,7 +99,7 @@ Let us see how it works<br>
 <br>_step11_update> we can see just saved dashboard and visualize data in here then Press the 'Update' button of top right. Then we can see the updated data in the visualize panel like below
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_update.png)
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
-
+<br><br>
 
 ### 3. ELK Dashboard Sampels
 ![ELK_Pool](images/elk_map.png)
