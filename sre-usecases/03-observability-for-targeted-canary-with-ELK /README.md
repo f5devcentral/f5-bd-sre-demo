@@ -39,26 +39,26 @@ _Hereby, it’s ready to use ELK stack for BIG-IP access logs, NGINX apps in ope
  If all of configurations are ready to use in proper, all of defined logs are saving in ELK server. We are able to customize a  dashboard to see visualized useful information which user location, response time by location etc.<br>
 Let us see how it works<br>
 
-<br>_<font color="red"> step1)</font> open your browser and go to ELK server( http://x.x.x.x:5601 ) then you can see a Kibana main window like following_
+<br>_step1) open your browser and go to ELK server( http://x.x.x.x:5601 ) then you can see a Kibana main window like following_
 ![Kibana1_main](images/Kibana1_main.png)
 
-<br>_<font color="red"> step2)</font> Then press control icon from left side-menu to go to management page_
+<br>_step2) Then press control icon from left side-menu to go to management page_
 ![Kibana2_management](images/Kibana2_management.png)
 
-<br>_<font color="red"> step3)</font> We can see the management page then press "Index Management" menu from the page_
+<br>_step3) We can see the management page then press "Index Management" menu from the page_
 ![Kibana3_management_detail](images/Kibana3_management_detail.png)
 
-<br>_<font color="red">step4)</font> Now, we can see index management page and see index name which defined them in ![logstash.conf](./logstash.conf) file._
+<br>_step4) Now, we can see index management page and see index name which defined them in ![logstash.conf](./logstash.conf) file._
 ![Kibana4_index_management](images/Kibana4_index_management.png)
 <br>_You can check more detail to index manage from_ ![here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
 
-<br>_<font color="red"> step5)</font> Next step is that we will make visualize with our indexed data to add it into dashboard so let's move to visualize tab then press "Create new visualization"_
+<br>_step5) Next step is that we will make visualize with our indexed data to add it into dashboard so let's move to visualize tab then press "Create new visualization"_
 ![Kibana5_visualize](images/Kibana5_visualize.png)
 
-<br>_<font color="red"> step6)</font> Choose one of the visualization data type and we will use coordinate Map in here_
+<br>_step6) Choose one of the visualization data type and we will use coordinate Map in here_
 ![Kibana6_create](images/Kibana6_create.png)
 
-<br>_<font color="red"> step7)</font> Choose source what you want to use and we will choose "logstash-f5-nginx-access" for demo_ 
+<br>_step7) Choose source what you want to use and we will choose "logstash-f5-nginx-access" for demo_ 
 ![Kibana7_source](images/Kibana7_source.png)
 
 <br>_step8_metrics) We need to set Metrics and Buckets on this step. aggregation is Average and field is response_time_ms then custom label is Response Time_ 
@@ -90,11 +90,13 @@ Let us see how it works<br>
 <br>_step10_dashboard) We need to save the dashboard so press "Save" button then type the dashboard title which "ASEAN_CES_Dashboard"_ 
 ![Kibana10_dashboard_name](images/Kibana10_dashboard_name.png)
 ![Kibana10_dashboard_final](images/Kibana10_dashboard_final.png)
-<br>_Now, we are ready to see dashboard what we created visualize. 
 
+<br>_step11_move) Now, we are ready to see dashboard what we created visualize. Press "Dashboard" icon from left side-menu then we can see the dashboard name which just saved name is "ASEAN_CES_Dashboard"_
+![Kibana11_move_dashboard](images/Kibana11_move_dashboard.png)
 
-<br>_step10_dashboard)_ 
-![Kibana10_dashboard](images/Kibana10_dashboard.png)
+<br>_step11_update> we can see just saved dashboard and visualize data in here then Press the 'Update' button of top right. Then we can see the updated data in the visualize panel like below
+![Kibana11_dashboard_update](images/Kibana11_dashboard_update.png)
+![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
 
 
 3. ELK Dashboard Sampels
