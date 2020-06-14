@@ -18,7 +18,7 @@ This use case is a part of use ![case#1(targeted canary)](https://github.com/f5d
 
 ## Setup and Configuration
 
-1. Create HSL pool, iRule on BIG-IP<br>
+#1. Create HSL pool, iRule on BIG-IP<br>
  We need to create pool with ELK stack server on BIG-IP then this pool member will be used by ![iRules](./iRules) to send access logs from BIG-IP to ELK stack.<br>
  
 ![ELK_Pool](images/elk_pool.png)
@@ -35,7 +35,7 @@ _The new VIP name is a bookinfo-EdgeGW and the bookinfo pool is defined for defa
 _Hereby, it’s ready to use ELK stack for BIG-IP access logs, NGINX apps in openshift cluster but we don’t need any configuration for NGINX apps at this step why it’s already pushed at the first case in config-map._<br>
 ![ELK_Log](images/elk_log.png)
 
-2. Customize Kibana Dashboard<br>
+#2. Customize Kibana Dashboard<br>
  If all of configurations are ready to use in proper, all of defined logs are saving in ELK server. We are able to customize a  dashboard to see visualized useful information which user location, response time by location etc.<br>
 This page is a bit long to show step by step but the contents are too easy. don't worry about that.<br>
 Let us see how it works<br>
@@ -100,7 +100,7 @@ Let us see how it works<br>
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
 
 
-3. ELK Dashboard Sampels
+#3. ELK Dashboard Sampels
 ![ELK_Pool](images/elk_map.png)
 
 
