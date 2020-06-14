@@ -37,6 +37,7 @@ _Hereby, it’s ready to use ELK stack for BIG-IP access logs, NGINX apps in ope
 
 2. Customize Kibana Dashboard<br>
  If all of configurations are ready to use in proper, all of defined logs are saving in ELK server. We are able to customize a  dashboard to see visualized useful information which user location, response time by location etc.<br>
+This page is a bit long to show step by step but the contents are too easy. don't worry about that.<br>
 Let us see how it works<br>
 
 <br>_step1) open your browser and go to ELK server( http://x.x.x.x:5601 ) then you can see a Kibana main window like following_
