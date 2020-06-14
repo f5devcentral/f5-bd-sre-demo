@@ -120,7 +120,7 @@ Let us see how it works<br>
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
 <br><br><br>
 
-### 3. ELK Dashboard Sampels
+### 3. ELK Dashboard Sampel
 ![ELK_Pool](images/elk_map.png)
 
 
