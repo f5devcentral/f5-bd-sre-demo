@@ -47,8 +47,8 @@ _Next, create a new VIP for the **bookinfo** HSL pool which was created earlier.
 _Name the VIP_, **bookinfo-EdgeGW**.
 <br>
 
-_Through BIG-IP console, assign **bookinfo** as the **Default Pool**. 
-_The name of the applied iRule, for this VIP, is **elk_hsl_irule**. With this iRule, all access logs containing the respective UUID for the HTTP datagram, will be sent to the ELK server._<br>
+_Through BIG-IP console, assign **bookinfo** as the **Default Pool**._
+_The name of the applied iRule, for this VIP, is **elk_hsl_irule**. With this iRule, all access logs containing the respective UUID for the HTTP datagram, will be sent to the ELK server_<br>
 ![ELK_Default_Pool](images/elk_default_pool.png)
 <br>
 
