@@ -105,7 +105,7 @@ Now, let us see how it works<br>
 
 <br>_step9_save) We need to save the visualize configuration and we will save as ASEAN_CES_ 
 ![Kibana9_save](images/Kibana9_save_name.png)
-<br>_We just created one sample visualize data but if you want to more visualize data, you can repeat step5 to step9 as much as you want to create_.
+<br>_**We just created one sample visualize data but if you want to more visualize data, you can repeat step5 to step9 as much as you want to create**_.
 <br>
 
 <br>_step10_dashboard)We will go to create dashboard to add the visualize date on it. Press "Dashboard" button from left side-menu_ 
