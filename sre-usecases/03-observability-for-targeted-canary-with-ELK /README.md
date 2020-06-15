@@ -44,7 +44,7 @@ _Next, create a new VIP for the **bookinfo** HSL pool which was created earlier.
 *[NOTE] The VIP is the destination (combination of IP and port) to which requests will be sent when bound for whatever application lives behind the BIG-IP.*
 <br>
 
-_Name the VIP, **bookinfo-EdgeGW**.
+_Name the VIP_, **bookinfo-EdgeGW**.
 <br>
 
 _Through BIG-IP console, assign **bookinfo** as the **Default Pool**. 
@@ -105,7 +105,7 @@ Now, let us see how it works<br>
 
 <br>_step9_save) We need to save the visualize configuration and we will save as ASEAN_CES_ 
 ![Kibana9_save](images/Kibana9_save_name.png)
-<br>_We just created one sample visualize data but if you want to more visualize data, you can repeate step5 to step9 as much as you want to create.
+<br>_We just created one sample visualize data but if you want to more visualize data, you can repeat step5 to step9 as much as you want to create_.
 <br>
 
 <br>_step10_dashboard)We will go to create dashboard to add the visualize date on it. Press "Dashboard" button from left side-menu_ 
@@ -139,7 +139,7 @@ Now, let us see how it works<br>
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
 <br><br><br>
 
-### 3. ELK Dashboard Sampel
+### 3. ELK Dashboard Sample
 ![ELK_Pool](images/elk_map.png)
 
 
