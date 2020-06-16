@@ -10,12 +10,12 @@ In this demo, ELK is utilized for the analysis and visualization of application 
 
 
 ## Prerequisites
-### Setup the ELK server using these instructions: ( https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04 ) The ELK stack resides outside the Red Hat OpenShift Container Platform cluster.
-### Analyze and apply the Logstash configuration ![file](./logstash.conf) for this demo.
+ Setup the ELK server using these instructions: ( https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04 ) The ELK stack resides outside the Red Hat OpenShift Container Platform cluster.
+Analyze and apply the Logstash configuration ![file](./logstash.conf) for this demo.
 
 
 ## Use case scenario
-This use case is an extension of the earlier ![Use Case #1(targeted canary)](https://github.com/f5devcentral/f5-bd-sre-demo/tree/master/sre-usecases/01-targeted-canary). 
+This use case is an extension of the earlier ***![Use Case #1(targeted canary)](https://github.com/f5devcentral/f5-bd-sre-demo/tree/master/sre-usecases/01-targeted-canary). 
 
 If you have completed Use Case #1, existing configurations exist in the Red Hat OpenShift Container Platform cluster, which inserts UUIDs into the HTTP header of the data packet. Using an iRule on BIG-IP, the UUID is generated and inserted into the HTTP header of every HTTP request packet arriving at BIG-IP.
 
@@ -31,7 +31,7 @@ All traffic access logs containing UUIDs are sent to the ELK server, for validat
 *[NOTE] F5’s High Speed Logging (HSL) mechanism is designed to pump out as much data as can be readily consumed, with the least amount of overhead, to a pool of syslog listeners. As it happens, Elastic Stack is designed to consume data in high volume. The HSL template packs the information into a parsable string, perfect for Logstash to interpret.*
 <br>
  
- This pool member will be used by ![iRules](./iRules) to send access logs from BIG-IP to the ELK server.<br>
+ This pool member will be used by ***![iRules](./iRules)*** to send access logs from BIG-IP to the ELK server.<br>
 ![ELK_Pool](images/elk_pool.png)
 <br>
  
@@ -44,10 +44,10 @@ _Next, create a new VIP for the **bookinfo** HSL pool which was created earlier.
 *[NOTE] The VIP is the destination (combination of IP and port) to which requests will be sent when bound for whatever application lives behind the BIG-IP.*
 <br>
 
-_Name the VIP, **bookinfo-EdgeGW**.
+_Name the VIP, **bookinfo-EdgeGW**_
 <br>
 
-_Through BIG-IP console, assign **bookinfo** as the **Default Pool**. 
+_Through BIG-IP console, assign **bookinfo** as the **Default Pool**._ 
 _The name of the applied iRule, for this VIP, is **elk_hsl_irule**. With this iRule, all access logs containing the respective UUID for the HTTP datagram, will be sent to the ELK server._<br>
 ![ELK_Default_Pool](images/elk_default_pool.png)
 <br>
