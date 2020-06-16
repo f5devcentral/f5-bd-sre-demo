@@ -44,11 +44,11 @@ _Next, create a new VIP for the **bookinfo** HSL pool which was created earlier.
 *[NOTE] The VIP is the destination (combination of IP and port) to which requests will be sent when bound for whatever application lives behind the BIG-IP.*
 <br>
 
-_Name the VIP_, **bookinfo-EdgeGW**.
+_Name the VIP, **bookinfo-EdgeGW**.
 <br>
 
-_Through BIG-IP console, assign **bookinfo** as the **Default Pool**._
-_The name of the applied iRule, for this VIP, is **elk_hsl_irule**. With this iRule, all access logs containing the respective UUID for the HTTP datagram, will be sent to the ELK server_<br>
+_Through BIG-IP console, assign **bookinfo** as the **Default Pool**. 
+_The name of the applied iRule, for this VIP, is **elk_hsl_irule**. With this iRule, all access logs containing the respective UUID for the HTTP datagram, will be sent to the ELK server._<br>
 ![ELK_Default_Pool](images/elk_default_pool.png)
 <br>
 
@@ -59,10 +59,10 @@ _Now, the ELK server is ready for the analysis of BIG-IP access logs. Configurat
 ### 2. Customize Kibana Dashboard<br>
 If all configurations are in place, log information will be processed by the ELK server. You will be able to customize a dashboard containing useful, visualized data, likeuser location, response time by location, etc.<br>
 
-The list of key indicators available through the dashboard page is rather long, we won't describe all of the indicators here.<br>
+The list of key indicators available on the Kibana dashboard page is rather long, so we won't describe all of the indicators here.<br>
 Now, let us see how it works<br>
 
-<br>_step1) Launch the console to the ELK server( http://x.x.x.x:5601 ) in your favourite web browser. A Kibana landing page appears, like so._
+<br>_step1) Launch the console to the ELK server( http://x.x.x.x:5601 ) in your favourite web browser. A Kibana landing page appears, like so. We will leave the study and analysis of those indicators to you at your own time._
 ![Kibana1_main](images/Kibana1_main.png)
 <br>
 
@@ -76,43 +76,43 @@ Now, let us see how it works<br>
 
 <br>_step4) On the **Index Management** page, notice the indexes defined in the ![logstash.conf](./logstash.conf) file are displayed._
 ![Kibana4_index_management](images/Kibana4_index_management.png)
-<br>_You can check more detail to index manage from_ ![here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
+<br>_A guide to managing these indices is available_ ![here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
 <br>
 
-<br>_step5) Next step is that we will make visualize with our indexed data to add it into dashboard so let's move to visualize tab then press "Create new visualization"_
+<br>_step5) Next, proceed to visualize the indexed data. From the side-menu on the left, click on the **Visualize** icon._
 ![Kibana5_visualize](images/Kibana5_visualize.png)
 <br>
 
-<br>_step6) Choose one of the visualization data type and we will use coordinate Map in here_
+<br>_step6) In the **New Visualization** pop-out window, select the **Coordinate Map** visualization._
 ![Kibana6_create](images/Kibana6_create.png)
 <br>
 
-<br>_step7) Choose source what you want to use and we will choose "logstash-f5-nginx-access" for demo_ 
+<br>_step7) In the **New Coordinate Map** pop-out window, select the **logstash-f5-nginx-access** data source._ 
 ![Kibana7_source](images/Kibana7_source.png)
 <br>
 
-<br>_step8_metrics) We need to set Metrics and Buckets on this step. aggregation is Average and field is response_time_ms then custom label is Response Time_ 
+<br>_step8_metrics) In the **Metrics** section of the page, assign the following values to the visible fields: **Average** in the *Aggregation* field, **response_time_ms** in the *Field* field and *Response Time* in the **Custom label** field._ 
 ![Kibana8_Metrics](images/Kibana8_Metrics.png)
 <br>
 
-<br>_step8_buckets) At the Buckets, aggregation is Geohash and field is geoip.location as default and other options remain as default then custom label type Locations_ 
+<br>_step8_buckets) In the **Buckets** section of the page, click on the **+ Add** link. Assign the following values to the visible fields: **Geohash** in the *Aggregation* field, **geoip.location** in the *Field* field and *Locations* in the **Custom label** field._ 
 ![Kibana8_Bucktes](images/Kibana8_Buckets.png)
 <br>
 
-<br>_step9_apply) Traffic generator is working in background so we can see the result like follwoing after update metrics/buckets and press apply change button_ 
+<br>_step9_apply) Apply your changes by clicking the icon highlighted in the diagram. Notice the dashboard is updated with visualized log traffic._ 
 ![Kibana9_apply](images/Kibana9_apply_save.png)
 <br>
 
-<br>_step9_save) We need to save the visualize configuration and we will save as ASEAN_CES_ 
+<br>_step9_save) Save the visualization as **ASEAN_CES**._ 
 ![Kibana9_save](images/Kibana9_save_name.png)
-<br>_**We just created one sample visualize data but if you want to more visualize data, you can repeat from step5 to step9 as much as you want to create**_.
+<br>_Congratulations on creating your first data visualization! Repeat the steps you took to create as many visualizations as you wish.
 <br>
 
-<br>_step10_dashboard)We will go to create dashboard to add the visualize date on it. Press "Dashboard" button from left side-menu_ 
+<br>_step10_dashboard)Next, create a dashboard, and add the visualization you just created, to it. From the side-menu on the left, click on the "Dashboard" icon._ 
 ![Kibana10_dashboard](images/Kibana10_dashboard.png)
 <br>
 
-<br>_step10_crate) Press "Create new dashboard" button_ 
+<br>_step10_crate) On the **Dashboards** page, click on the "Create new dashboard" button._ 
 ![Kibana10_create](images/Kibana10_dashboard_create.png)
 <br>
 
@@ -139,7 +139,7 @@ Now, let us see how it works<br>
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
 <br><br><br>
 
-### 3. ELK Dashboard Sample
+### 3. ELK Dashboard Sampel
 ![ELK_Pool](images/elk_map.png)
 
 
