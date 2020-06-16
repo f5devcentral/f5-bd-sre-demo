@@ -152,5 +152,5 @@ _We can see correlation between big-ip(N-S traffic) and nginx endpoint(E-W traff
 ![ELK_Pool](images/elk_response.png)
 <br><br>
 
-_This is a response time for N-S traffic
+_This is a response time for N-S traffic_
 ![ELK_Pool](images/elk_dot.png)
