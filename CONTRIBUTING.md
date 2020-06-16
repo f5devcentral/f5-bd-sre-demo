@@ -17,7 +17,6 @@ If you've found a security issue that you'd like to disclose confidentially, ple
 ## Getting Started
 
 - Fork the repository on GitHub
-- Install [build dependencies](TBD)
 - Read the [README](README.md) for build and test instructions
 - Play with the project, submit bugs, submit patches!
 
