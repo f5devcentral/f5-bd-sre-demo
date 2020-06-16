@@ -62,84 +62,84 @@ If all configurations are in place, log information will be processed by the ELK
 The list of key indicators available on the Kibana dashboard page is rather long, so we won't describe all of the indicators here.<br>
 Now, let us see how it works<br>
 
-<br>_step1) Launch the console to the ELK server( http://x.x.x.x:5601 ) in your favourite web browser. A Kibana landing page appears, like so. We will leave the study and analysis of those indicators to you at your own time._
+<br>_**(Step 1)** Launch the console to the ELK server( http://x.x.x.x:5601 ) in your favourite web browser. A Kibana landing page appears, like so. We will leave the study and analysis of those indicators to you at your own time._
 ![Kibana1_main](images/Kibana1_main.png)
 <br>
 
-<br>_step2) From the side-menu on the left, click on the highlighted icon, and the **Management** page is displayed._
+<br>_**(Step 2)** From the side-menu on the left, click on the highlighted icon, and the **Management** page is displayed._
 ![Kibana2_management](images/Kibana2_management.png)
 <br>
 
-<br>_step3) On the **Management** page, click on the link **Index Management**, and the **Index Management** page is displayed._
+<br>_**(Step 3)** On the **Management** page, click on the link **Index Management**, and the **Index Management** page is displayed._
 ![Kibana3_management_detail](images/Kibana3_management_detail.png)
 <br>
 
-<br>_step4) On the **Index Management** page, notice the indexes defined in the ![logstash.conf](./logstash.conf) file are displayed._
+<br>_**(Step 4)** On the **Index Management** page, notice the indexes defined in the ![logstash.conf](./logstash.conf) file are displayed._
 ![Kibana4_index_management](images/Kibana4_index_management.png)
 <br>_A guide to managing these indices is available_ ![here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
 <br>
 
-<br>_step5) Next, proceed to visualize the indexed data. From the side-menu on the left, click on the **Visualize** icon._
+<br>_**(Step 5)** Next, proceed to visualize the indexed data. From the side-menu on the left, click on the **Visualize** icon._
 ![Kibana5_visualize](images/Kibana5_visualize.png)
 <br>
 
-<br>_step6) In the **New Visualization** pop-out window, select the **Coordinate Map** visualization._
+<br>_**(Step 6)** In the **New Visualization** pop-out window, select the **Coordinate Map** visualization._
 ![Kibana6_create](images/Kibana6_create.png)
 <br>
 
-<br>_step7) In the **New Coordinate Map** pop-out window, select the **logstash-f5-nginx-access** data source._ 
+<br>_**(Step 7)** In the **New Coordinate Map** pop-out window, select the **logstash-f5-nginx-access** data source._ 
 ![Kibana7_source](images/Kibana7_source.png)
 <br>
 
-<br>_step8_metrics) In the **Metrics** section of the page, assign the following values to the visible fields: **Average** in the *Aggregation* field, **response_time_ms** in the *Field* field and *Response Time* in the **Custom label** field._ 
+<br>_**(Step 8)** In the **Metrics** section of the page, assign the following values to the visible fields: **Average** in the *Aggregation* field, **response_time_ms** in the *Field* field and *Response Time* in the **Custom label** field._ 
 ![Kibana8_Metrics](images/Kibana8_Metrics.png)
 <br>
 
-<br>_step8_buckets) In the **Buckets** section of the page, click on the **+ Add** link. Assign the following values to the visible fields: **Geohash** in the *Aggregation* field, **geoip.location** in the *Field* field and *Locations* in the **Custom label** field._ 
+<br>_**(Step 9)** In the **Buckets** section of the page, click on the **+ Add** link. Assign the following values to the visible fields: **Geohash** in the *Aggregation* field, **geoip.location** in the *Field* field and *Locations* in the **Custom label** field._ 
 ![Kibana8_Bucktes](images/Kibana8_Buckets.png)
 <br>
 
-<br>_step9_apply) Apply your changes by clicking the icon highlighted in the diagram. Notice the dashboard is updated with visualized log traffic._ 
+<br>_**(Step 10)** Apply your changes by clicking the icon highlighted in the diagram. Notice the dashboard is updated with visualized log traffic._ 
 ![Kibana9_apply](images/Kibana9_apply_save.png)
 <br>
 
-<br>_step9_save) Save the visualization as **ASEAN_CES**._ 
+<br>_**(Step 11)** Save the visualization as **ASEAN_CES**._ 
 ![Kibana9_save](images/Kibana9_save_name.png)
-<br>_Congratulations on creating your first data visualization! Repeat the steps you took to create as many visualizations as you wish.
+<br>_Congratulations on creating your first data visualization! Repeat the steps you took to create as many visualizations as you wish._
 <br>
 
-<br>_step10_dashboard)Next, create a dashboard, and add the visualization you just created, to it. From the side-menu on the left, click on the "Dashboard" icon._ 
+<br>_**(Step 12)** Next, create a dashboard and add to it, the visualization you just created. From the side-menu on the left, click on the "Dashboard" icon._ 
 ![Kibana10_dashboard](images/Kibana10_dashboard.png)
 <br>
 
-<br>_step10_crate) On the **Dashboards** page, click on the "Create new dashboard" button._ 
+<br>_**(Step 13)** On the **Dashboards** page, click on the "Create new dashboard" button._ 
 ![Kibana10_create](images/Kibana10_dashboard_create.png)
 <br>
 
-<br>_step10_add_panel) Press "Add" button then we need to choose panels in here what we created the visualize. The ASEAN_CES was just created one at step9_ 
+<br>_**(Step 14)** Click on the "Add" link. Notice that we will can now add visualizatons as panels. Add the **ASEAN_CES** visualization as a panel, by clicking on the respective link of the same name._
 ![Kibana10_add_panel](images/Kibana10_add_panel.png)
 ![Kibana10_choose_panel](images/Kibana10_select_panel.png)
 <br>
 
-<br>_step10_save) The visualize 'ASEAN_CES' is displaying on the dashboard now.We will see only one in here but if you created some more at step9, you can add all of them in here_ 
+<br>_**(Step 15)** The visualization **ASEAN_CES** is displayed on the dashboard. Repeat Steps 6 - 14 as many times as you need, to add more visualizations to the dashboard._ 
 ![Kibana10_save](images/Kibana10_dashboard_save.png)
 <br>
 
-<br>_step10_dashboard) We need to save the dashboard so press "Save" button then type the dashboard title which "ASEAN_CES_Dashboard"_ 
+<br>_**(Step 16)** Click the "Save" link. Type "ASEAN_CES_Dashboard" in the title field and click on the "Confirm Save" button below. _ 
 ![Kibana10_dashboard_name](images/Kibana10_dashboard_name.png)
 ![Kibana10_dashboard_final](images/Kibana10_dashboard_final.png)
 <br>
 
-<br>_step11_move) Now, we are ready to see dashboard what we created visualize. Press "Dashboard" icon from left side-menu then we can see the dashboard name which just saved name is "ASEAN_CES_Dashboard"_
+<br>_**(Step 17)** Now, we are ready to monitor the visualization dashboard proper. Click on the "Dashboard" icon on the menu, and notice that the dashboard titled  "ASEAN_CES_Dashboard" appears in the list._
 ![Kibana11_move_dashboard](images/Kibana11_move_dashboard.png)
 <br>
 
-<br>_step11_update> we can see just saved dashboard and visualize data in here then Press the 'Update' button of top right. Then we can see the updated data in the visualize panel like below
+<br>_**(Step 18)** Click on the link "ASEAN_CES_Dashboard" and the dashboard launches, complete with visualized data. Click on the **Refresh** button located at the top right corner of the page. The visualization panel is now refreshed with the latest data from the log stream.
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_update.png)
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
 <br><br><br>
 
-### 3. ELK Dashboard Sampel
+### 3. ELK Dashboard Sample
 ![ELK_Pool](images/elk_map.png)
 
 
