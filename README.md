@@ -42,6 +42,10 @@ The SRE demo will be centered around # distinct customer driven use cases.
 
 This project is WIP, with more use cases to be added.
 
+## Contribution
+
+Please read [How to Contribute](CONTRIBUTING.md)
+
 ## Support
 
 This project is a community effort to promote container ingress service automation and is maintained by F5 BD. For any feature requests or issues, feel free to open an issue and we will give our best effort to address it.
