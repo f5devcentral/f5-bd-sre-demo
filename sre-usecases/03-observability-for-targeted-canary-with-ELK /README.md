@@ -140,7 +140,9 @@ Now, let us see how it works<br>
 <br><br><br>
 
 ### 3. ELK Dashboard Sample
-_The following data is a dashboard sample and we can see user location and response time by user location._
+The following data is a dashboard sample and we can easily check visualized data in centralized display.
+
+_We can see user location counts and response time by user location._
 ![ELK_Pool](images/elk_map.png)
 <br><br>
 
