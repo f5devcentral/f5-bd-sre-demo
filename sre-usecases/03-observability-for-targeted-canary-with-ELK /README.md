@@ -134,7 +134,7 @@ Now, let us see how it works<br>
 ![Kibana11_move_dashboard](images/Kibana11_move_dashboard.png)
 <br>
 
-<br>_**(Step 18)** Click on the link "ASEAN_CES_Dashboard" and the dashboard launches, complete with visualized data. Click on the **Refresh** button located at the top right corner of the page. The visualization panel is now refreshed with the latest data from the log stream.
+<br>_**(Step 18)** Click on the link "ASEAN_CES_Dashboard" and the dashboard launches, complete with visualized data. Click on the **Refresh** button located at the top right corner of the page. The visualization panel is now refreshed with the latest data from the log stream._
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_update.png)
 ![Kibana11_dashboard_update](images/Kibana11_dashboard_refresh.png)
 <br><br><br>
