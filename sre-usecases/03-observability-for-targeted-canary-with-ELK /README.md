@@ -11,7 +11,7 @@ In this demo, ELK is utilized for the analysis and visualization of application 
 
 ## Prerequisites
  Setup the ELK server using these instructions: ( https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04 ) The ELK stack resides outside the Red Hat OpenShift Container Platform cluster.
-Analyze and apply the Logstash configuration ![file](./logstash.conf) for this demo.
+***![This](./logstash.conf)*** is the Logstash configuration file for this demo.
 
 
 ## Use case scenario
@@ -31,7 +31,7 @@ All traffic access logs containing UUIDs are sent to the ELK server, for validat
 *[NOTE] F5’s High Speed Logging (HSL) mechanism is designed to pump out as much data as can be readily consumed, with the least amount of overhead, to a pool of syslog listeners. As it happens, Elastic Stack is designed to consume data in high volume. The HSL template packs the information into a parsable string, perfect for Logstash to interpret.*
 <br>
  
- This pool member will be used by ***![iRules](./iRules)*** to send access logs from BIG-IP to the ELK server.<br>
+_This pool member will be used by ***![iRules](./iRules)*** to send access logs from BIG-IP to the ELK server._<br>
 ![ELK_Pool](images/elk_pool.png)
 <br>
  
@@ -140,13 +140,17 @@ Now, let us see how it works<br>
 <br><br><br>
 
 ### 3. ELK Dashboard Sample
+_The following data is a dashboard sample and we can see user location and response time by user location._
 ![ELK_Pool](images/elk_map.png)
+<br><br>
 
-
+_We can check average response time and max response time for each endpoint in here_
 ![ELK_Pool](images/elk_bigip.png)
+<br><br>
 
-
+_We can see correlation between big-ip(N-S traffic) and nginx endpoint(E-W traffic)_
 ![ELK_Pool](images/elk_response.png)
+<br><br>
 
-
+_This is a response time for N-S traffic
 ![ELK_Pool](images/elk_dot.png)
