@@ -37,10 +37,12 @@ Thanks for your contributions!
 
 ## Coding and Documenting Style
 
-All the use cases should be developed and documented in a repeatable manner. In another word, you should include all the pieces neccessary to dulplicate the use case in my own lab: 
+All the use cases should be developed and documented in a repeatable manner. In another word, you should include all the pieces neccessary for the user to dulplicate the use case in his/her own lab: 
 - Pre-requisites and dependencies
-- Step-by-step document
-- All the code/scripts needed
+- Step-by-step installation and deployment/implementation guide, with screenshots as needed
+- All the code/script/configuration used
+- List of limitations if any
+- Troubleshooting if possible
 
 
 ## Commit Message Format
