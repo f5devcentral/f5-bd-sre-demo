@@ -37,6 +37,8 @@ The SRE demo will be centered around # distinct customer driven use cases.
 
 - [Scenario Use Case #1: Blue Green Deployment with F5 Cloud Services](./sre-usecases/02-blue-green-deployment/README.md)
 - [Scenario Use Case #2: Targeted Canary Deployment](sre-usecases/01-targeted-canary/README.md)
+- [Scenario Use Case #3: Observability with ELK](sre-usecases/03-observability-for-targeted-canary-with-ELK /README.md)
+- [Scenario Use Case #4: Observability with Beacon](sre-usecases/04-observability-for-code-to-custommer-with-Beacon/README.md)
 
 This project is WIP, with more use cases to be added.
 
