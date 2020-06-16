@@ -125,7 +125,7 @@ Now, let us see how it works<br>
 ![Kibana10_save](images/Kibana10_dashboard_save.png)
 <br>
 
-<br>_**(Step 16)** Click the "Save" link. Type "ASEAN_CES_Dashboard" in the title field and click on the "Confirm Save" button below. _ 
+<br>_**(Step 16)** Click the "Save" link. Type "ASEAN_CES_Dashboard" in the title field and click on the "Confirm Save" button below._ 
 ![Kibana10_dashboard_name](images/Kibana10_dashboard_name.png)
 ![Kibana10_dashboard_final](images/Kibana10_dashboard_final.png)
 <br>
