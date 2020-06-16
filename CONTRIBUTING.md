@@ -38,6 +38,7 @@ Thanks for your contributions!
 ## Coding and Documenting Style
 
 All the use cases should be developed and documented in a repeatable manner. In another word, you should include all the pieces neccessary for the user to dulplicate the use case in his/her own lab: 
+- Description of SRE use case with topology
 - Pre-requisites and dependencies
 - Step-by-step installation and deployment/implementation guide, with screenshots as needed
 - All the code/script/configuration used
