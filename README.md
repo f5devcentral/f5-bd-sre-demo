@@ -26,7 +26,7 @@ Although the respective requirements vary for each use case, in general you will
 - F5 Container Ingress Service - Installed
   - https://clouddocs.f5.com/containers/v2/openshift/
 - Access to F5 Cloud Services (DNS Load Balancing)
-  - https://www.f5.com/products/ways-to-deploy/cloud-services/preview
+  - https://portal.cloudservices.f5.com/
 
 
 
