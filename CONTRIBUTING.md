@@ -41,7 +41,7 @@ All the use cases should be developed and documented in a repeatable manner. In 
 - Description of SRE use case with topology
 - Pre-requisites and dependencies
 - Step-by-step installation and deployment/implementation guide, with screenshots as needed
-- All the code/script/configuration used
+- All the code/script/configuration/manifest used
 - List of limitations if any
 - Troubleshooting if possible
 
