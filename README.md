@@ -26,6 +26,7 @@ Although the respective requirements vary for each use case, in general you will
   - https://clouddocs.f5.com/containers/v2/openshift/
 - Access to F5 Cloud Services (DNS Load Balancing)
   - https://www.f5.com/products/ways-to-deploy/cloud-services/preview
+- Subscribe to F5 Beacon [Click here](Beacon%20Subscription.pdf)
 
 
 ## Getting started
