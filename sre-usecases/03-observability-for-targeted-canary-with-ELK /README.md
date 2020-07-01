@@ -6,12 +6,12 @@ A brief description of the three projects. Based on the Apache Lucene search eng
 
 In this demo, ELK is utilized for the analysis and visualization of application performance through a centralized dashboard. Through the dashboard, end-users can easily correlation for North-South traffic and East-West traffic.<br>
 
-[ELK_Topolgy](images/elk_topology.png)<br>
+![ELK_Topolgy](images/elk_topology.png)<br>
 
 
 ## Prerequisites
  Setup the ELK server using these instructions: ( https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-logstash-and-kibana-elastic-stack-on-ubuntu-18-04 ) The ELK stack resides outside the Red Hat OpenShift Container Platform cluster.
-***![This](./logstash.conf)*** is the Logstash configuration file for this demo.
+***[This](./logstash.conf)*** is the Logstash configuration file for this demo.
 
 
 ## Use case scenario
