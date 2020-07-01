@@ -31,7 +31,7 @@ All traffic access logs containing UUIDs are sent to the ELK server, for validat
 *[NOTE] F5’s High Speed Logging (HSL) mechanism is designed to pump out as much data as can be readily consumed, with the least amount of overhead, to a pool of syslog listeners. As it happens, Elastic Stack is designed to consume data in high volume. The HSL template packs the information into a parsable string, perfect for Logstash to interpret.*
 <br>
  
-_This pool member will be used by ***![iRules](./iRules)*** to send access logs from BIG-IP to the ELK server._<br>
+_This pool member will be used by ***[iRules](./iRules)*** to send access logs from BIG-IP to the ELK server._<br>
 ![ELK_Pool](images/elk_pool.png)
 <br>
  
@@ -76,7 +76,7 @@ Now, let us see how it works<br>
 
 <br>_**(Step 4)** On the **Index Management** page, notice the indexes defined in the ![logstash.conf](./logstash.conf) file are displayed._
 ![Kibana4_index_management](images/Kibana4_index_management.png)
-<br>_A guide to managing these indices is available_ ![here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
+<br>_A guide to managing these indices is available_ [here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
 <br>
 
 <br>_**(Step 5)** Next, proceed to visualize the indexed data. From the side-menu on the left, click on the **Visualize** icon._
