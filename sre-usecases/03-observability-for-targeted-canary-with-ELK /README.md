@@ -6,7 +6,7 @@ A brief description of the three projects. Based on the Apache Lucene search eng
 
 In this demo, ELK is utilized for the analysis and visualization of application performance through a centralized dashboard. Through the dashboard, end-users can easily correlation for North-South traffic and East-West traffic.<br>
 
-![ELK_Topolgy](images/elk_topology.png)<br>
+[ELK_Topolgy](images/elk_topology.png)<br>
 
 
 ## Prerequisites
