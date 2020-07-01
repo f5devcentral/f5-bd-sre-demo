@@ -15,7 +15,7 @@ In this demo, ELK is utilized for the analysis and visualization of application 
 
 
 ## Use case scenario
-This use case is an extension of the earlier ***![Use Case #1(targeted canary)](https://github.com/f5devcentral/f5-bd-sre-demo/tree/master/sre-usecases/01-targeted-canary)***. 
+This use case is an extension of the earlier ***[Use Case #1(targeted canary)](https://github.com/f5devcentral/f5-bd-sre-demo/tree/master/sre-usecases/01-targeted-canary)***. 
 
 If you have completed Use Case #1, existing configurations exist in the Red Hat OpenShift Container Platform cluster, which inserts UUIDs into the HTTP header of the data packet. Using an iRule on BIG-IP, the UUID is generated and inserted into the HTTP header of every HTTP request packet arriving at BIG-IP.
 
