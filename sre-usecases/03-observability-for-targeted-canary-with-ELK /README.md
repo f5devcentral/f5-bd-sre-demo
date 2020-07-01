@@ -74,7 +74,7 @@ Now, let us see how it works<br>
 ![Kibana3_management_detail](images/Kibana3_management_detail.png)
 <br>
 
-<br>_**(Step 4)** On the **Index Management** page, notice the indexes defined in the ![logstash.conf](./logstash.conf) file are displayed._
+<br>_**(Step 4)** On the **Index Management** page, notice the indexes defined in the [logstash.conf](./logstash.conf) file are displayed._
 ![Kibana4_index_management](images/Kibana4_index_management.png)
 <br>_A guide to managing these indices is available_ [here](https://www.elastic.co/guide/en/kibana/current/managing-indices.html)
 <br>
