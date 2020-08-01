@@ -85,7 +85,7 @@ NGINX+ provides Zero Trust Networking (in this case for E-W traffic) with Mutual
 
 With above, you can go ahead to create a secret for OpenShift Cluster (to store all SSL Key and Certificate), which will be referenced by productpage POD (or NGINX+ TLS).
 ```
-oc create secret generic bookinfo-cert --from-file=ssl-key=./cert/httpbin.f5asean.local.key --from-file=ssl-cert=./cert/httpbin.f5asean.local.crt --from-file=ca-cert=./cert/f5asean.local.ca.crt --from-file=adc-cert=./cert/f5adc.crt --from-file=adc-key=./cert/f5adc.key
+oc create secret generic bookinfo-cert --from-file=ssl-key=./cert/httpbin.f5asean.local.key --from-file=ssl-cert=./cert/httpbin.f5asean.local.crt
 ```
 
 ### 4. Deploy Bookinfo - Modified to include NGINX+
