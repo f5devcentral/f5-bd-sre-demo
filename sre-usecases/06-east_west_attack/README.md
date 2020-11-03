@@ -37,8 +37,8 @@ The NAP can monitor the traffic traversing namespace boundaries between pods and
 ## Setup and Configuration
 Follow the links below to begin setup and configuration.
 
-1. [Prepare the 'NGINX App Protect' container image](https://github.com/network1211/sre-security/blob/master/use-case02/nap_create/README.md)
-2. [Install demo applications, and NGINX App Protect on the OpenShift](https://github.com/network1211/sre-security/blob/master/use-case02/install_app/README.md)
-3. [Create the Ansible Playbook](https://github.com/network1211/sre-security/blob/master/use-case02/create_ansible/README.md)
-4. [Configuring the 'Watcher' and 'Logstash' of Elasticsearch](https://github.com/network1211/sre-security/blob/master/use-case02/elk_config/README.md)
-5. [Simulate the demo](https://github.com/network1211/sre-security/blob/master/use-case02/simulate_demo/README.md)
+1. [Prepare the 'NGINX App Protect' container image](nap_create/README.md)
+2. [Install demo applications, and NGINX App Protect on the OpenShift](install_app/README.md)
+3. [Create the Ansible Playbook](create_ansible/README.md)
+4. [Configuring the 'Watcher' and 'Logstash' of Elasticsearch](elk_config/README.md)
+5. [Simulate the demo](simulate_demo/README.md)
