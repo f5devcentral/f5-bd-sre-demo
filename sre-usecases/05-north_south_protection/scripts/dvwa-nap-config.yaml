@@ -1,0 +1,162 @@
+##################################################################################################
+# Configmap DVWA01
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dvwa01-conf
+data:
+  nginx_sre.conf: | 
+   
+   upstream dvwa01 {
+       server 127.0.0.1:80;	       
+   }
+ 
+    server {
+       listen 8080;
+       server_name dvwa01-http;
+       proxy_http_version 1.1;
+       
+       real_ip_header X-Forwarded-For;     
+       set_real_ip_from 0.0.0.0/0;
+    
+       app_protect_enable on;
+       app_protect_security_log_enable on;
+       app_protect_policy_file "/etc/nginx/NginxSRELabPolicy.json";
+       app_protect_security_log "/etc/app_protect/conf/log_default.json" syslog:server=52.187.13.8:5003;
+
+       location / {
+           client_max_body_size 0;
+           default_type text/html;
+           proxy_pass http://dvwa01;
+           proxy_set_header Host $host;
+       }
+   }
+  NginxSRELabPolicy.json: |
+    {
+      "policy": {
+        "name": "SRE_DVWA01_POLICY",
+        "template": { "name": "POLICY_TEMPLATE_NGINX_BASE" },
+        "applicationLanguage": "utf-8",
+        "enforcementMode": "blocking",
+        "response-pages": [
+            {
+                "responseContent": "<html><head><title>SRE DevSecOps - DVWA01 - Blocking Page</title></head><body><font color=green size=10>NGINX App Protect Blocking Page - DVWA01 Server</font><br><br>Please consult with your administrator.<br><br>Your support ID is: <%TS.request.ID()%><br><br><a href='javascript:history.back();'>[Go Back]</a></body></html>",
+                "responseHeader": "HTTP/1.1 302 OK\\r\\nCache-Control: no-cache\\r\\nPragma: no-cache\\r\\nConnection: close",
+                "responseActionType": "custom",
+                "responsePageType": "default"
+            }
+        ],
+        "blocking-settings": {
+            "violations": [
+                {
+                    "name": "VIOL_FILETYPE",
+                    "alarm": true,
+                    "block": true
+                }
+            ]
+        },
+        "filetypes": [
+            {
+                "name": "*",
+                "type": "wildcard",
+                "allowed": true,
+                "checkPostDataLength": false,
+                "postDataLength": 4096,
+                "checkRequestLength": false,
+                "requestLength": 8192,
+                "checkUrlLength": true,
+                "urlLength": 2048,
+                "checkQueryStringLength": true,
+                "queryStringLength": 2048,
+                "responseCheck": false
+            },
+            {
+                "name": "pdf",
+                "allowed": false
+            }
+        ]
+    }
+    }
+---
+##################################################################################################
+# Configmap DVWA02
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dvwa02-conf
+data:
+  nginx_sre.conf: | 
+   
+   upstream dvwa02 {
+       server 127.0.0.1:80;	       
+   }
+ 
+    server {
+       listen 8080;
+       server_name dvwa02-http;
+       proxy_http_version 1.1;
+       
+       real_ip_header X-Forwarded-For;     
+       set_real_ip_from 0.0.0.0/0;
+    
+       app_protect_enable on;
+       app_protect_security_log_enable on;
+       app_protect_policy_file "/etc/nginx/NginxSRELabPolicy.json";
+       app_protect_security_log "/etc/app_protect/conf/log_default.json" syslog:server=52.187.13.8:5003;
+
+       location / {
+           client_max_body_size 0;
+           default_type text/html;
+           proxy_pass http://dvwa02;
+           proxy_set_header Host $host;
+       }
+   }
+  NginxSRELabPolicy.json: |
+    {
+      "policy": {
+        "name": "SRE_DVWA02_POLICY",
+        "template": { "name": "POLICY_TEMPLATE_NGINX_BASE" },
+        "applicationLanguage": "utf-8",
+        "enforcementMode": "blocking",
+        "response-pages": [
+            {
+                "responseContent": "<html><head><title>SRE DevSecOps - DVWA02 - Blocking Page</title></head><body><font color=green size=10>NGINX App Protect Blocking Page - DVWA02 Server</font><br><br>Please consult with your administrator.<br><br>Your support ID is: <%TS.request.ID()%><br><br><a href='javascript:history.back();'>[Go Back]</a></body></html>",
+                "responseHeader": "HTTP/1.1 302 OK\\r\\nCache-Control: no-cache\\r\\nPragma: no-cache\\r\\nConnection: close",
+                "responseActionType": "custom",
+                "responsePageType": "default"
+            }
+        ],
+        "blocking-settings": {
+            "violations": [
+                {
+                    "name": "VIOL_FILETYPE",
+                    "alarm": true,
+                    "block": true
+                }
+            ]
+        },
+        "filetypes": [
+            {
+                "name": "*",
+                "type": "wildcard",
+                "allowed": true,
+                "checkPostDataLength": false,
+                "postDataLength": 4096,
+                "checkRequestLength": false,
+                "requestLength": 8192,
+                "checkUrlLength": true,
+                "urlLength": 2048,
+                "checkQueryStringLength": true,
+                "queryStringLength": 2048,
+                "responseCheck": false
+            },
+            {
+                "name": "jpg",
+                "allowed": false
+            }
+        ]
+    }
+    }
+---
