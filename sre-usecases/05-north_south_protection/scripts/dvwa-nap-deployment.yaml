@@ -1,0 +1,125 @@
+##################################################################################################
+# DVWA App01
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: dvwa01
+  labels:
+    app: dvwa01
+    service: dvwa01
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: http
+  selector:
+    app: dvwa01
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwa01-v1
+  labels:
+    app: dvwa01
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvwa01
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: dvwa01
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: UTC
+        name: nginx01
+        image: network1211/jameslee:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d/nginx_sre.conf
+          subPath: nginx_sre.conf
+        - name: config-volume
+          mountPath: /etc/nginx/NginxSRELabPolicy.json
+          subPath: NginxSRELabPolicy.json
+      - env:
+        - name: TZ
+          value: UTC
+        name: dvwa01
+        image: network1211/dvwa01:2.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: config-volume
+        configMap:
+          name: dvwa01-conf
+---
+##################################################################################################
+# DVWA App02
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: dvwa02
+  labels:
+    app: dvwa02
+    service: dvwa02
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    name: http
+  selector:
+    app: dvwa02
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwa02-v1
+  labels:
+    app: dvwa02
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvwa02
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: dvwa02
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: UTC
+        name: nginx02
+        image: network1211/jameslee:latest
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d/nginx_sre.conf
+          subPath: nginx_sre.conf
+        - name: config-volume
+          mountPath: /etc/nginx/NginxSRELabPolicy.json
+          subPath: NginxSRELabPolicy.json
+      - env:
+        - name: TZ
+          value: UTC
+        name: dvwa02
+        image: network1211/dvwa02:2.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: config-volume
+        configMap:
+          name: dvwa02-conf
