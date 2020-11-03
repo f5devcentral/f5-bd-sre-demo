@@ -1,0 +1,61 @@
+##################################################################################################
+# DVWA01 Route
+##################################################################################################
+apiVersion: v1
+kind: Route
+metadata:
+    labels:
+      name: f5-dvwa01-route
+    name: f5-dvwa01-route
+    namespace: devsecops
+    annotations:
+      # health monitor
+      virtual-server.f5.com/health: |
+        [
+          {
+            "path": "dvwa01.devsecops.com/",
+            "send": "",
+            "protocol": "tcp",
+            "interval": 10,
+            "timeout": 20
+          }
+        ]
+spec:
+    host: dvwa01.devsecops.com
+    path: "/"
+    port:
+      targetPort: 8080
+    to:
+      kind: Service
+      name: dvwa01
+---
+##################################################################################################
+# DVWA02 Route
+##################################################################################################
+apiVersion: v1
+kind: Route
+metadata:
+    labels:
+      name: f5-dvwa02-route
+    name: f5-dvwa02-route
+    namespace: devsecops
+    annotations:
+      # health monitor
+      virtual-server.f5.com/health: |
+        [
+          {
+            "path": "dvwa02.devsecops.com/",
+            "send": "",
+            "protocol": "tcp",
+            "interval": 10,
+            "timeout": 20
+          }
+        ]
+spec:
+    host: dvwa02.devsecops.com
+    path: "/"
+    port:
+      targetPort: 8080
+    to:
+      kind: Service
+      name: dvwa02
