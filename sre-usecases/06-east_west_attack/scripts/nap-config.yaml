@@ -1,0 +1,172 @@
+##################################################################################################
+# Configmap Critical-App
+##################################################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: critical-app-conf
+data:
+  nginx_sre.conf: | 
+   
+   upstream critical-app {
+       server 127.0.0.1:80;	       
+   }
+ 
+    server {
+       listen 8888;
+       server_name critical-app-http;
+       proxy_http_version 1.1;
+       
+       real_ip_header X-Forwarded-For;     
+       set_real_ip_from 0.0.0.0/0;
+    
+       app_protect_enable on;
+       app_protect_security_log_enable on;
+       app_protect_policy_file "/etc/nginx/NginxSRELabPolicy.json";
+       app_protect_security_log "/etc/app_protect/conf/log_default.json" syslog:server=your_elk_server_ip_here;
+
+       location / {
+           client_max_body_size 0;
+           default_type text/html;
+           proxy_pass http://critical-app;
+           proxy_set_header Host $host;
+       }
+   }
+  NginxSRELabPolicy.json: |
+    {
+       "policy" : {
+          "name" : "NGINX_App_Protect_Policy",
+          "description" : "NGINX App Protect Strict Policy",
+          "template": { "name": "POLICY_TEMPLATE_NGINX_BASE" },
+          "applicationLanguage": "utf-8",
+          "enforcementMode": "blocking",
+          "response-pages": [
+              {
+                  "responseContent": "<html><head><title>SRE DevSecOps - East-West Attack Blocking</title></head><body><font color=green size=10>NGINX App Protect Blocking Page</font><br><br>Please consult with your administrator.<br><br>Your support ID is: <%TS.request.ID()%><br><br><a href='javascript:history.back();'>[Go Back]</a></body></html>",
+                  "responseHeader": "HTTP/1.1 302 OK\\r\\nCache-Control: no-cache\\r\\nPragma: no-cache\\r\\nConnection: close",
+                  "responseActionType": "custom",
+                  "responsePageType": "default"
+              }
+          ],
+          "blocking-settings" : {
+              "evasions" : [
+                  {
+                     "description" : "Multiple decoding",
+                     "maxDecodingPasses" : 2
+                  }
+              ],
+              "http-protocols" : [
+                 {
+                    "description" : "Host header contains IP address",
+                    "enabled" : false
+                 }
+              ],
+              "violations" : [
+                  {
+                     "alarm" : true,
+                     "block" : true,
+                     "description" : "Violation Rating Need Examination detected",
+                     "name" : "VIOL_RATING_NEED_EXAMINATION"
+                  }
+              ]
+          },
+          "signature-sets" : [
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "CVE Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Buffer Overflow Signatures"
+               },
+               {
+                  "alarm" : true,
+                 "block" : true,
+                  "name" : "Authentication/Authorization Attack Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "High Accuracy Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "SQL Injection Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Cross Site Scripting Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "OS Command Injection Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "HTTP Response Splitting Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Path Traversal Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "XPath Injection Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Command Execution Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Server Side Code Injection Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Information Leakage Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Directory Indexing Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Remote File Include Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Predictable Resource Location Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Other Application Attacks Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "High Accuracy Detection Evasion Signatures"
+               },
+               {
+                  "alarm" : true,
+                  "block" : true,
+                  "name" : "Generic Detection Signatures (High/Medium Accuracy)"
+               }
+          ]
+       }
+    }    
+---
