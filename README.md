@@ -42,6 +42,7 @@ The SRE demo will be centered around the following distinct customer driven use 
 - [Scenario Use Case #3: Observability with ELK](sre-usecases/03-observability-for-targeted-canary-with-ELK /README.md)
 - [Scenario Use Case #4: Observability with Beacon](sre-usecases/04-observability-for-code-to-customer-with-Beacon/README.md)
 - [Scenario Use Case #5: North-South Traffic Protection in the OpenShift Environment](sre-usecases/05-north_south_protection/README.md)
+- [Scenario Use Case #6: Protecting Critical Apps against East-West Attack]
 
 This project is WIP, with more use cases to be added.
 
