@@ -1,0 +1,32 @@
+##################################################################################################
+# Deploy Dev App
+##################################################################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-test-v1
+  labels:
+    app: dev-test
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-test
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: dev-test
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: UTC
+        name: dev-test
+        image: network1211/ubuntu02:5.0
+        imagePullPolicy: IfNotPresent
+        command: [ "bash" ]
+        stdin: true
+---
