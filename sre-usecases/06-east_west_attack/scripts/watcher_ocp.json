@@ -1,0 +1,77 @@
+{
+  "trigger": {
+    "schedule": {
+      "interval": "1m"
+    }
+  },
+  "input": {
+    "search": {
+      "request": {
+        "search_type": "query_then_fetch",
+        "indices": [
+          "nginx-*"
+        ],
+        "rest_total_hits_as_int": true,
+        "body": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "match": {
+                    "outcome_reason": "SECURITY_WAF_VIOLATION"
+                  }
+                },
+                {
+                  "match": {
+                    "x_forwarded_for_header_value": "N/A"
+                  }
+                },
+                {
+                  "range": {
+                    "@timestamp": {
+                      "gte": "now-1h",
+                      "lte": "now"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "condition": {
+    "compare": {
+      "ctx.payload.hits.total": {
+        "gt": 0
+      }
+    }
+  },
+  "actions": {
+    "logstash_logging": {
+      "webhook": {
+        "scheme": "http",
+        "host": "localhost",
+        "port": 1234,
+        "method": "post",
+        "path": "/{{watch_id}}",
+        "params": {},
+        "headers": {},
+        "body": "{{ctx.payload.hits.hits.0._source.ip_client}}"
+      }
+    },
+    "logstash_exec": {
+      "webhook": {
+        "scheme": "http",
+        "host": "localhost",
+        "port": 9001,
+        "method": "post",
+        "path": "/{{watch_id}}",
+        "params": {},
+        "headers": {},
+        "body": "{{ctx.payload.hits.hits[0].total}}"
+      }
+    }
+  }
+}

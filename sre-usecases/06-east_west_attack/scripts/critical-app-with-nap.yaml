@@ -1,0 +1,65 @@
+##################################################################################################
+# Deploy Critical App with NGINX App Protect
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: critical-app
+  labels:
+    app: critical-app
+    service: critical-app
+spec:
+  ports:
+  - port: 8888
+    targetPort: 8888
+    name: http
+  selector:
+    app: critical-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: critical-app-v1
+  labels:
+    app: critical-app
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: critical-app
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: critical-app
+        version: v1
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: UTC
+        name: nginx01
+        image: yourcontainerimagepath (eg. your_docker_hub_id/app-protect:latest)
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/nginx/conf.d/nginx_sre.conf
+          subPath: nginx_sre.conf
+        - name: config-volume
+          mountPath: /etc/nginx/NginxSRELabPolicy.json
+          subPath: NginxSRELabPolicy.json
+      - env:
+        - name: TZ
+          value: UTC
+        name: critical-app
+        image: network1211/ubuntu01:12.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        command: [ "bash" ]
+        args: [ "/start.sh" ]
+      volumes:
+      - name: config-volume
+        configMap:
+          name: critical-app-conf
+---

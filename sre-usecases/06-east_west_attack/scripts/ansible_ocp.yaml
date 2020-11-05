@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+  - name: Login to OCP cluster
+    k8s_auth:
+      host: https://yourocpdomain:6443
+      username: kubeadmin
+      password: your_ocp_password
+      validate_certs: no
+    register: k8s_auth_result
+
+  - name: Extract IP Address
+    command: cat /yourpath/ip.txt
+    register: badpod_ip
+
+  - name: Extract App Label from OpenShift
+    shell: |
+      sudo oc get pods -A -o json --field-selector status.podIP={{ badpod_ip.stdout }} |
+      grep "\"app\":" |
+      awk '{print $2}' |
+      sed 's/,//'
+    register: app_label
+
+  - name: Delete Malicious Deployments
+    shell: |
+      sudo oc delete all --selector app={{ app_label.stdout }} -A
+    register: delete_pod
+  
+  - name: Delete IP and Info File
+    command: rm -rf /yourpath/ip.txt
+
+  - name: OCP Service Deletion Completed
+    debug:
+      msg: "{{ delete_pod.stdout }}"
