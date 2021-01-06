@@ -24,49 +24,44 @@ This use case is to demonstrate the concept of Targeted Canary Deployment for tw
 
 1. Configuring Microsoft Azure AD B2C
 ![step-1](images/Slide6.jpeg)
+![step-2](images/Slide7.jpeg)
+![step-3](images/Slide8.jpeg)
+![step-4](images/Slide9.jpeg)
+![step-5](images/Slide10.jpeg)
+![step-6](images/Slide11.jpeg)
+![step-7](images/Slide12.jpeg)
+![step-8](images/Slide13.jpeg)
+![step-9](images/Slide14.jpeg)
+![step-10](images/Slide15.jpeg)
+![step-11](images/Slide16.jpeg)
+![step-12](images/Slide17.jpeg)
+![step-13](images/Slide18.jpeg)
+![step-14](images/Slide19.jpeg)
+![step-15](images/Slide20.jpeg)
+![step-16](images/Slide21.jpeg)
+![step-17](images/Slide22.jpeg)
+![step-18](images/Slide23.jpeg)
+![step-19](images/Slide24.jpeg)
+![step-20](images/Slide25.jpeg)
+![step-21](images/Slide26.jpeg)
+![step-22](images/Slide27.jpeg)
 
-![step-1](images/Slide7.jpeg)
-
-![step-1](images/Slide8.jpeg)
-
-![step-1](images/Slide9.jpeg)
-
-![step-1](images/Slide10.jpeg)
-
-![step-1](images/Slide11.jpeg)
-
-![step-1](images/Slide12.jpeg)
-
-![step-1](images/Slide13.jpeg)
-
-![step-1](images/Slide14.jpeg)
-
-![step-1](images/Slide15.jpeg)
-
-![step-1](images/Slide16.jpeg)
-
-![step-1](images/Slide17.jpeg)
-
-![step-1](images/Slide18.jpeg)
-
-![step-1](images/Slide19.jpeg)
-
-![step-1](images/Slide20.jpeg)
-
-![step-1](images/Slide21.jpeg)
-
-![step-1](images/Slide22.jpeg)
-
-![step-1](images/Slide23.jpeg)
-
-![step-1](images/Slide24.jpeg)
-
-![step-1](images/Slide25.jpeg)
-
-![step-1](images/Slide26.jpeg)
-
-![step-1](images/Slide27.jpeg)
-
+2. Configuring F5 APM(Access Policy Manager)
+![step-1](images/Slide29.jpeg)
+![step-2](images/Slide30.jpeg)
+![step-3](images/Slide31.jpeg)
+![step-4](images/Slide32.jpeg)
+![step-5](images/Slide33.jpeg)
+![step-6](images/Slide34.jpeg)
+![step-7](images/Slide35.jpeg)
+![step-8](images/Slide36.jpeg)
+![step-9](images/Slide37.jpeg)
+![step-10](images/Slide38.jpeg)
+![step-11](images/Slide39.jpeg)
+![step-12](images/Slide40.jpeg)
+![step-13](images/Slide41.jpeg)
+![step-14](images/Slide42.jpeg)
+![step-15](images/Slide43.jpeg)
 
 
 
