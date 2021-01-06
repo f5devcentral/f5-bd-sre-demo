@@ -22,7 +22,7 @@ This use case is to demonstrate the concept of Targeted Canary Deployment for tw
 
 ## Configuration Steps
 
-1. Configuring Microsoft Azure AD B2C
+## 1. Configuring Microsoft Azure AD B2C
 ![step-1](images/Slide6.jpeg)
 ![step-2](images/Slide7.jpeg)
 ![step-3](images/Slide8.jpeg)
@@ -46,7 +46,7 @@ This use case is to demonstrate the concept of Targeted Canary Deployment for tw
 ![step-21](images/Slide26.jpeg)
 ![step-22](images/Slide27.jpeg)
 
-2. Configuring F5 APM(Access Policy Manager)
+## 2. Configuring F5 APM(Access Policy Manager)
 ![step-1](images/Slide29.jpeg)
 ![step-2](images/Slide30.jpeg)
 ![step-3](images/Slide31.jpeg)
@@ -63,5 +63,15 @@ This use case is to demonstrate the concept of Targeted Canary Deployment for tw
 ![step-14](images/Slide42.jpeg)
 ![step-15](images/Slide43.jpeg)
 
-3. Configuring NGINX Plus
+## 3. Configuring NGINX Plus
+![step-1](images/Slide45.jpeg)
+
+## 4. Verifying Result
+![step-1](images/Slide47.jpeg)
+![step-2](images/Slide48.jpeg)
+![step-3](images/Slide49.jpeg)
+![step-4](images/Slide50.jpeg)
+![step-5](images/Slide51.jpeg)
+![step-6](images/Slide52.jpeg)
+
 
