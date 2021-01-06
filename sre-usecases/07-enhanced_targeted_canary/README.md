@@ -70,7 +70,7 @@ This use case is to demonstrate the concept of Targeted Canary Deployment for tw
 ![step-1](images/Slide47.jpeg)
 ![step-2](images/Slide48.jpeg)
 ![step-3](images/Slide49.jpeg)
-![step-4](images/Slide50.jpeg)
+![step-4](images/Slide50.jpg)
 ![step-5](images/Slide51.jpeg)
 ![step-6](images/Slide52.jpeg)
 
