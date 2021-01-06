@@ -6,7 +6,6 @@ In this use-case, we've enhanced our existing canary deployment use-case with F5
 
 ## Prerequisites
 - BIG-IP APM and NGINX+ already installed
-- Microsoft Azure AD B2C enabled
 - Running OpenShift Cluster (3.11 used in this demo) 
 - Must complete to install F5 CIS, bookinfo application and NGINX+ (You can find the installation steps in [here](sre-usecases/01-targeted-canary/README.md).
 
@@ -24,6 +23,50 @@ This use case is to demonstrate the concept of Targeted Canary Deployment for tw
 ## Configuration Steps
 
 1. Configuring Microsoft Azure AD B2C
+![step-1](images/Slide6.jpeg)
+
+![step-1](images/Slide7.jpeg)
+
+![step-1](images/Slide8.jpeg)
+
+![step-1](images/Slide9.jpeg)
+
+![step-1](images/Slide10.jpeg)
+
+![step-1](images/Slide11.jpeg)
+
+![step-1](images/Slide12.jpeg)
+
+![step-1](images/Slide13.jpeg)
+
+![step-1](images/Slide14.jpeg)
+
+![step-1](images/Slide15.jpeg)
+
+![step-1](images/Slide16.jpeg)
+
+![step-1](images/Slide17.jpeg)
+
+![step-1](images/Slide18.jpeg)
+
+![step-1](images/Slide19.jpeg)
+
+![step-1](images/Slide20.jpeg)
+
+![step-1](images/Slide21.jpeg)
+
+![step-1](images/Slide22.jpeg)
+
+![step-1](images/Slide23.jpeg)
+
+![step-1](images/Slide24.jpeg)
+
+![step-1](images/Slide25.jpeg)
+
+![step-1](images/Slide26.jpeg)
+
+![step-1](images/Slide27.jpeg)
+
 
 
 
