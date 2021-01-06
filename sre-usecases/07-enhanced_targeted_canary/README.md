@@ -63,5 +63,5 @@ This use case is to demonstrate the concept of Targeted Canary Deployment for tw
 ![step-14](images/Slide42.jpeg)
 ![step-15](images/Slide43.jpeg)
 
-
+3. Configuring NGINX Plus
 
