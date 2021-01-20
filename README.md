@@ -1,16 +1,16 @@
 # SRE Multi-Cluster Container Platform
 
 ## Summary
-This Site Reliability Engineering (or SRE) Multi-Cluster design is an F5 Alliances product showcase. It is initiated by F5 Business Development organization.
+This Site Reliability Engineering (or SRE) Multi-Cluster design is an F5 Alliances product showcase. It is initiated by the F5 Business Development organization.
 
 ## Goal
 
-The Purpose of the Multi-Cluster  SRE demo is to show how F5 product portfolio (BIG-IP, [Container Ingress Services](https://github.com/F5Networks/k8s-bigip-ctlr),  NGINX+, and F5 Cloud Service) can be used in conjunction with several other F5 Alliances integrations to help SRE deploy, manage and secure modern applications.
+The Purpose of the Multi-Cluster SRE demo is to show how the F5 product portfolio (BIG-IP, [Container Ingress Services](https://github.com/F5Networks/k8s-bigip-ctlr),  NGINX+, and F5 Cloud Service) can be used in conjunction with several other F5 Alliances integrations to help an SRE deploy, manage and secure modern applications.
 
 
 The Multi-Cluster SRE Design can be used:
 - as a self learning tool to get familiar with OpenShift, and F5 technologies (BIG-IP, Container Ingress Services, NGINX, and F5 Cloud service etc.) 
-- to build demo's and proof of concepts (POC's)
+- to build demos and proof of concepts (POC's)
 
 
 ## Prerequisites
