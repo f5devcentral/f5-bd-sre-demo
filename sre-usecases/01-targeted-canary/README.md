@@ -1,4 +1,4 @@
-# Getting Started
+# Targeted Canary deployment with F5 and OpenShift
 
 - [Getting Started](#getting-started)
   - [Summary](#summary)
