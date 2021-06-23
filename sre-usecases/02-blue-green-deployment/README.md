@@ -1,4 +1,4 @@
-# Getting Started - SRE Blue-Green Deployment 
+# SRE Blue-Green Deployment with F5 and OpenShift
 ## Summary
 The Site Reliability Engineering or SRE demo will be centered around three distinct customer driven use cases. This lab will take you through setting up one of the 3 use cases: Bule-Green Deployment  .
 
