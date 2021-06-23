@@ -1,5 +1,5 @@
-# Getting Started - SRE ELK Stack Deployment 
-## Summary
+# SRE Observability with F5, OpenShift, and ELK Stack
+
 The ELK stack is a collection of three open source projects, namely Elasticsearch, Logstash and Kibana. The ELK stack provides IT project stakeholders the capabilities of multi-system and multi-application log aggregation and analysis. In addition, the ELK stack provides data visualization at stakeholders' fingertips, which is useful for security analytics, system monitoring and troubleshooting.
 
 A brief description of the three projects. Based on the Apache Lucene search engine, Elasticsearch is an open source, full-text analysis and search engine. Logstash is a log aggregator that executes transformations on data derived from various input sources, before transfering it to output destinations. Kibana provides the data analysis and visualization capabilities for end-users, complementary to Elasticsearch.
