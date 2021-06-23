@@ -1,5 +1,4 @@
-# SRE Multi-Cluster Container Platform
-
+# SRE with F5 and OpenShift
 ## Summary
 This Site Reliability Engineering (or SRE) Multi-Cluster design is an F5 Alliances product showcase. It is initiated by F5 Business Development organization.
 
