@@ -38,9 +38,8 @@ The SRE demo will be centered around the following distinct customer driven use 
 
 - [Scenario Use Case #1: Blue Green Deployment with F5 Cloud Services](./sre-usecases/02-blue-green-deployment/README.md)
 - [Scenario Use Case #2: Targeted Canary Deployment](sre-usecases/01-targeted-canary/README.md)
-- [Scenario Use Case #3: Observability with ELK](sre-usecases/03-observability-for-targeted-canary-with-ELK /README.md)
+- [Scenario Use Case #3: Observability with ELK](sre-usecases/03-observability-for-targeted-canary-with-ELK/README.md)
 - [Scenario Use Case #4: Observability with Beacon](sre-usecases/04-observability-for-code-to-customer-with-Beacon/README.md)
-- [Scenario Use Case #5: North-South Traffic Protection in the OpenShift Environment](sre-usecases/05-north_south_protection/README.md)
 - [Scenario Use Case #6: Protecting Critical Apps against East-West Attack](sre-usecases/06-east_west_attack/README.md)
 - [Scenario Use Case #7: Enhanced Targeted Canary Deployment](sre-usecases/07-enhanced_targeted_canary/README.md)
 
